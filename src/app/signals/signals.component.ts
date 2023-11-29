@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, signal } from '@angular/core';
 
 
 @Component({
@@ -7,15 +7,22 @@ import { Component, DoCheck } from '@angular/core';
   styleUrls: ['./signals.component.css']
 })
 export class SignalsComponent implements DoCheck {
-  counter: number = 0;
+  // We use signal as a function (so we call the signal)
+  // A signal takes two arguments
+  // A signal returns us an object which is a wrapper around the data we assign it to 
+  // Whenever the value in counter changes, signal will notify angular about that change and tell it to render the new value in the UI
+
+  // Create a signal and assign it to counter prop
+  // NOTE counter is now a signal function which returns an object
+  counter = signal(0);
   message: string[] = [];
 
   increment(){
-    this.counter++;
+    this.counter;
   }
 
   decrement(){
-    this.counter--;
+    this.counter;
   }
 
   ngDoCheck(){

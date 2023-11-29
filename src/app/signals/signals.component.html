@@ -1,6 +1,12 @@
 <div class="counter-container">
     <button (click)="decrement()">-</button>
-    <span>{{ counter }}</span>
+    <!-- we can no longer use the property, we have to use the prop as a function -->
+    <!-- Now when we call the counter signal function it will give us the updated value -->
+    <!-- When we call counter function and there is a change Angular will recognize this and it will memorize where the signal has been used
+         and the future whenever that value changes angular will come to this place and it will update the value.
+         It will not re-render the complete component, It will only re-render that part of the UI where the change has to be updated.
+         This being the big advantage with signals -->
+    <span>{{ counter() }}</span>
     <button (click)="increment()">+</button>
 </div>
 
