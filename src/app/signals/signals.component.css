@@ -3,7 +3,7 @@
 }
 .task-container{
     margin-top: 20px;
-    border-top: #884EA0 3px solid;
+    border-top: #eaedf0 3px solid;
     padding: 30px 300px;
     text-align: center;
 }
@@ -12,7 +12,7 @@
     margin: 5px 0px;
     width: 660px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: #5B2C6F;
+    background-color: #868088;
 }
 button{
     font-size: 35px;
@@ -20,13 +20,14 @@ button{
     height: 60px;
     border: none;
     border-radius: 2px;
-    background-color: #5B2C6F;
+    background-color: #818181;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: 10px 10px;
-    color:#D2B4DE;
+    color:#e4e4e4;
 }
 span{
     margin: 10px 10px;
     font-size: 35px;
     padding: 0px 20px;
+    
 }
