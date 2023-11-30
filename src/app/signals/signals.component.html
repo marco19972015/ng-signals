@@ -11,7 +11,8 @@
 </div>
 
 <div class="task-container">
-    <div class="task-item" *ngFor="let msg of message">
+    <!-- We turn are message property into a message function -->
+    <div class="task-item" *ngFor="let msg of message()">
         {{msg}}
     </div>
 
