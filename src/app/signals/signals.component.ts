@@ -1,28 +1,27 @@
-import { Component, DoCheck, signal } from '@angular/core';
+import { Component, signal, computed, effect } from '@angular/core';
 
 @Component({
   selector: 'app-signals',
   templateUrl: './signals.component.html',
   styleUrls: ['./signals.component.css']
 })
-export class SignalsComponent implements DoCheck {
+export class SignalsComponent {
+  // effect function is used when we want to execute some extra logic code when the value of a signal changes
 
-  counter = signal(0);
-
-  // Create a signal and assign it to the message prop 
-  // we can specify the type since it is generic type at first
+  counter = signal(0);  
   message = signal<string[]>([]);
 
-  // Method to increment counter
+  // We are computing a value from the counter signal
+  doubleCounter = computed(() => this.counter() * 2)
+
+
+  constructor(){
+    // if there is no signal inside the callback function then effect won't run
+    effect(() => console.log('New counter value is: ' + this.counter()))
+  }
+
   increment(){
-    this.counter.update((prevValue) => prevValue + 1);
-
-    // Problem with the code below is that it's creating a new array everytime we increment the size
-
-    // ...prevMessage extracts all the elements from the prevMessage array
-    // and those element then become an element of the new array
-    // then in that new array we can add that new value we want to push
-    this.message.update((prevMessage) => [...prevMessage, 'Current value of counter is: ' + this.counter()]);
+    this.counter.update((prevValue) => prevValue + 1);  
 
     // With this code we are not creating a new array, instead we are pushing the new element to the same existing array
     this.message.mutate((prevMessage) => prevMessage.push('Current value of counter is: ' + this.counter()));
@@ -35,7 +34,4 @@ export class SignalsComponent implements DoCheck {
     this.message.mutate((prevMessage) => prevMessage.pop());
   }
 
-  ngDoCheck(){
-    console.log('Angular change detection called');
-  }
 }

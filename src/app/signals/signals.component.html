@@ -7,6 +7,8 @@
          It will not re-render the complete component, It will only re-render that part of the UI where the change has to be updated.
          This being the big advantage with signals -->
     <span>{{ counter() }}</span>
+    <!-- When we use the doubleCounter signal Angular will understand that we are using counter signal as an input-->
+    <span>{{ doubleCounter() }}</span>
     <button (click)="increment()">+</button>
 </div>
 
